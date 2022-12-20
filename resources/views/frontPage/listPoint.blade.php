@@ -7,20 +7,21 @@
             <div role="alert" class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow ">
-                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal" onclick="modalHandlerUpload()" aria-label="close modal" role="button">
+                    <button type="button" class="closeModal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal" onclick="modalHandlerUpload()" aria-label="close modal" role="button">
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
                         <span class="sr-only">Close modal</span>
                     </button>
                     <div class="px-6 py-6 lg:px-8">
-                        <h3 class="mb-4 text-xl font-medium text-slate-600 text-center">Form Upload Poin</h3>
+                        <h3 class="mb-4 text-xl font-medium text-slate-600 text-center">Form Poin Portfolio</h3>
+                        <div class="alertSuccess hidden text-green-700 text-md font-semibold bg-green-300 rounded-xl px-3 py-6"></div>
+                        <div class="alertForm hidden text-red-700 text-sm font-semibold bg-red-300 rounded-xl px-3 py-4"></div>
                         <form class="space-y-6" action="" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div>
                                 <label for="NamaKegiatan" class="block mb-2 text-sm font-medium text-slate-500 ">Nama Kegiatan</label>
                                 <input type="text" name="namaKegiatan" id="namaKegiatan" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
-                                <div class=""></div>
                             </div>
                             <div>
                                 <label for="kategori" class="block mb-2 text-sm font-medium text-slate-500 ">Kategori Kegiatan</label>
@@ -68,30 +69,30 @@
                             @csrf
                             <div>
                                 <label for="NamaKegiatan" class="block mb-2 text-sm font-medium text-slate-500 ">Nama Kegiatan</label>
-                                <input type="text" name="namaKegiatan" id="namaKegiatan" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
+                                <input type="text" name="namaKegiatan" id="editnamaKegiatan" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
                             </div>
                             <div>
                                 <label for="kategori" class="block mb-2 text-sm font-medium text-slate-500 ">Kategori Kegiatan</label>
-                                <input type="text" name="kategori" id="kategori" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
+                                <input type="text" name="kategori" id="editkategori" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
                             </div>
                             <div>
                                 <label for="instansi" class="block mb-2 text-sm font-medium text-slate-500 ">Instansi Penyelenggara</label>
-                                <input type="text" name="instansi" id="instansi" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
+                                <input type="text" name="instansi" id="editinstansi" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
                             </div>
                             <div>
                                 <label for="tglKegiatan" class="block mb-2 text-sm font-medium text-slate-500 ">Tanggal Kegiatan</label>
-                                <input type="date" name="tglKegiatan" id="tglKegiatan" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
+                                <input type="date" name="tglKegiatan" id="edittglKegiatan" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
                             </div>
                             <div>
-                                <label for="tglKegiatan" class="block mb-2 text-sm font-medium text-slate-500 ">Semester</label>
-                                <input type="date" name="semester" id="semester" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
+                                <label for="semester" class="block mb-2 text-sm font-medium text-slate-500 ">Semester</label>
+                                <input type="text" name="semester" id="editsemester" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
                             </div>
                             <div>
                                 <label for="bukti" class="block mb-2 text-sm font-medium text-slate-500 ">Upload Bukti</label>
-                                <input type="text" name="bukti" id="bukti" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
+                                <input type="text" name="bukti" id="editbukti" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
                             </div>
 
-                            <button type="button" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit">Upload Poin</button>
+                            <button type="button" class="uploadDataEdit w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit">Upload Poin</button>
 
                         </form>
                     </div>
@@ -239,7 +240,7 @@
 
                         </div>
                     </div>
-                    <table class="w-full text-sm text-left text-slate-500 " id="myTable">
+                    <table class="w-full text-sm text-left text-slate-500 " id="myTable" style="width: 100%;">
                         <thead class="text-xs uppercase bg bg-white text-slate-500">
                             <tr>
                                 <th scope="col" class="py-3 px-6">No</th>

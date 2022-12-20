@@ -26,6 +26,9 @@ Route::get('/poinPorto', function () {
     return view('frontPage.listPoint');
 });
 
+Route::get('/poinPorto', function () {
+    return view('frontPage.listPoint');
+})->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/', function () {
     return view('frontPage.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -40,4 +43,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

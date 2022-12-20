@@ -207,31 +207,102 @@
             }
         });
 
+        // Edit Data
         $('body').on('click', '.showModal', function(e) {
-            
-            $('.uploadData').click(function() {
-                // alert('Saya diklik');
+            var id = $(this).data('id');
+            $.ajax({
+                url: 'poinMahasiswa/' + id + '/edit',
+                type: 'GET',
+                success: function(response) {
+                    $('#namaKegiatan').val(response.result.namaKegiatan);
+                    $('#kategori').val(response.result.kategori);
+                    $('#instansi').val(response.result.instansi);
+                    $('#tglKegiatan').val(response.result.tglKegiatan);
+                    $('#semester').val(response.result.semester);
+                    $('#bukti').val(response.result.bukti);
+                    console.log(response.result);
+                    $('.uploadData').click(function() {
+                        simpan(id);
+                    });
+                }
+            });
+        });
 
-                // console.log($namaKegiatan + '-' + $kategori + '-' + $instansi + '+ ' + $tglKegiatan + '-' + $semester + '-' + $bukti)
-                $.ajax({
-                    url: 'poinMahasiswa',
-                    type: 'POST',
-                    data: {
-                        namaKegiatan: $('#namaKegiatan').val(),
-                        kategori: $('#kategori').val(),
-                        instansi: $('#instansi').val(),
-                        tglKegiatan: $('#tglKegiatan').val(),
-                        semester: $('#semester').val(),
-                        bukti: $('#bukti').val(),
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        $('#myTable').DataTable().ajax.reload();
-                        
+        // Function simpan dan update
+        function simpan(id = '') {
+            if (id == '') {
+                var var_url = 'poinMahasiswa';
+                var var_type = 'POST';
+            } else {
+                var var_url = 'poinMahasiswa/' + id;
+                var var_type = 'PUT';
+            }
+            $.ajax({
+                url: var_url,
+                type: var_type,
+                data: {
+                    namaKegiatan: $('#namaKegiatan').val(),
+                    kategori: $('#kategori').val(),
+                    instansi: $('#instansi').val(),
+                    tglKegiatan: $('#tglKegiatan').val(),
+                    semester: $('#semester').val(),
+                    bukti: $('#bukti').val(),
+                },
+                success: function(response) {
+                    if (response.errors) {
+                        console.log(response.errors);
+                        $('.alertForm').removeClass('hidden');
+                        $('.alertForm').html("<ul>");
+                        $.each(response.errors, function(key, value) {
+                            $('.alertForm').find('ul').append("<li>" + value + "</li>");
+                        });
+                        $('.alertForm').append("</ul>");
+
+                    } else {
+                        $('.alertSuccess').removeClass('hidden');
+                        $('.alertSuccess').html(response.success);
                     }
 
-                });
+                    $('#myTable').DataTable().ajax.reload();
+
+                }
+
             });
+        }
+
+        // Hapus Data
+        $('body').on('click', '.deleteBtn', function(e) {
+            if (confirm('Apa anda yakin ingin menghapus data ini?') == true) {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: 'poinMahasiswa/' + id,
+                    type: 'DELETE',
+                });
+                $('#myTable').DataTable().ajax.reload();
+            }
+        });
+
+        // Upload Data
+        $('body').on('click', '.showModal', function(e) {
+
+            $('.uploadData').click(function() {
+                simpan();
+            });
+        });
+
+        $('.closeModal').click(function() {
+
+            $('#namaKegiatan').val('');
+            $('#kategori').val('');
+            $('#instansi').val('');
+            $('#tglKegiatan').val('');
+            $('#semester').val('');
+            $('#bukti').val('');
+
+            $('.alertForm').addClass('hidden');
+            $('.alertForm').html('');
+            $('.alertSuccess').addClass('hidden');
+            $('.alertSuccess').html('');
         });
     </script>
 </body>

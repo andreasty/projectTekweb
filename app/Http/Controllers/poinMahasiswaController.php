@@ -52,12 +52,12 @@ class poinMahasiswaController extends Controller
             'semester' => 'required',
             'bukti' => 'required',
         ], [
-            'namaKegiatan.required' => 'Form harus di isi',
-            'kategori.required' => 'Form harus di isi',
-            'instansi.required' => 'Form harus di isi',
-            'tglKegiatan.required' => 'Form harus di isi',
-            'semester.required' => 'Form harus di isi',
-            'bukti.required' => 'Form harus di isi',
+            'namaKegiatan.required' => 'Form nama kegiatan wajib diisi!',
+            'kategori.required' => 'Form kategori kegiatan wajib diisi!',
+            'instansi.required' => 'Form instansi penyelenggara wajib diisi!',
+            'tglKegiatan.required' => 'Form tanggal kegiatan wajib diisi!',
+            'semester.required' => 'Form semester wajib diisi!',
+            'bukti.required' => 'Form bukti kegiatan wajib diisi!',
         ]);
 
         if ($validasi->fails()) {
@@ -95,7 +95,8 @@ class poinMahasiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = poinMahasiswa::where('id_poin', $id)->first();
+        return response()->json(['result' => $data]);
     }
 
     /**
@@ -107,7 +108,36 @@ class poinMahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validasi = Validator::make($request->all(), [
+            'namaKegiatan' => 'required',
+            'kategori' => 'required',
+            'instansi' => 'required',
+            'tglKegiatan' => 'required',
+            'semester' => 'required',
+            'bukti' => 'required',
+        ], [
+            'namaKegiatan.required' => 'Form nama kegiatan wajib diisi!',
+            'kategori.required' => 'Form kategori kegiatan wajib diisi!',
+            'instansi.required' => 'Form instansi penyelenggara wajib diisi!',
+            'tglKegiatan.required' => 'Form tanggal kegiatan wajib diisi!',
+            'semester.required' => 'Form semester wajib diisi!',
+            'bukti.required' => 'Form bukti kegiatan wajib diisi!',
+        ]);
+
+        if ($validasi->fails()) {
+            return response()->json(['errors' => $validasi->errors()]);
+        } else {
+            $data = [
+                'namaKegiatan' => $request->namaKegiatan,
+                'kategori' => $request->kategori,
+                'instansi' => $request->instansi,
+                'tglKegiatan' => $request->tglKegiatan,
+                'semester' => $request->semester,
+                'bukti' => $request->bukti
+            ];
+            poinMahasiswa::where('id_poin', $id)->update($data);
+            return response()->json(['success' => "Berhasil edit data poin, Silahkan tunggu di validasi"]);
+        }
     }
 
     /**
@@ -118,6 +148,6 @@ class poinMahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        poinMahasiswa::where('id_poin', $id)->delete();
     }
 }

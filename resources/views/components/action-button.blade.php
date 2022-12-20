@@ -1,2 +1,2 @@
-<a class="" data-id="{{ $data->id }}" href="#" onclick="modalHandlerEdit(true)">Edit</a>
-<a class="text-red-400" data-id="{{ $data->id }}" href="#" ">Delete</a>
+<a class="showModal" data-id="{{ $data->id_poin }}" href="#" onclick="modalHandlerUpload(true)">Edit</a>
+<a class="deleteBtn text-red-400" data-id="{{ $data->id_poin }}" href="#" ">Delete</a>
