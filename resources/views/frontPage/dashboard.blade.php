@@ -223,28 +223,41 @@
 
             <div class="p-2">
                 <div class="overflow-x-auto relative bg-white rounded-2xl p-4">
-                    <table class="w-full text-sm text-left text-slate-500">
+                    <table class="w-full text-sm text-left text-slate-500 " id="myTable" style="width: 100%;">
                         <thead class="text-xs uppercase bg bg-white text-slate-500">
                             <tr>
+                                <th scope="col" class="py-3 px-6">No</th>
                                 <th scope="col" class="py-3 px-6">Nama Kegiatan</th>
-                                <th scope="col" class="py-3 px-6">Kategori Poin</th>
-                                <th scope="col" class="py-3 px-6">Poin</th>
+                                <th scope="col" class="py-3 px-6">Kategori Kegiatan</th>
+                                <th scope="col" class="py-3 px-6">Instansi Penyelenggara</th>
+                                <th scope="col" class="py-3 px-6">Tanggal Kegiatan</th>
+                                <!-- <th scope="col" class="py-3 px-6">Poin</th> -->
+                                <th scope="col" class="py-3 px-6">Semester</th>
                                 <th scope="col" class="py-3 px-6">Bukti</th>
-                                <th scope="col" class="py-3 px-6">Status</th>
+                                <th scope="col" class="py-3 px-6 status">Status</th>
+                                <th scope="col" class="py-3 px-6">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <!-- <tbody>
 
+                            
                             <tr class="bg-white border-b">
-                                <th scope="row" class="py-4 px-6 font-medium whitespace-nowrap text-slate-400">Seminar Nasional Integer 4#</th>
-                                <td class="py-4 px-6">Seminar Nasional</td>
-                                <td class="py-4 px-6">5 poin</td>
+                                <th scope="row" class="py-4 px-6 font-medium whitespace-nowrap text-slate-400">Test</th>
+                                <td class="py-4 px-6">Test</td>
+                                <td class="py-4 px-6">Test</td>
+                                <td class="py-4 px-6">Test</td>
+                                <td class="py-4 px-6">5</td>
                                 <td class="py-4 px-6"><a href="#" class="underline">Lihat Bukti</a></td>
                                 <td class="py-4 px-6 text-green-500 font-semibold">Tervalidasi</td>
+                                <td class="py-4 px-6 font-semibold">
+                                    <form action="" method="Post">
+                                        
+                                    </form>
+                                </td>
                             </tr>
-
-                        </tbody>
-                    </table>
+                            
+                        </tbody> -->
+                    </table>    
                 </div>
             </div>
             <footer class="flex w-full h-24">

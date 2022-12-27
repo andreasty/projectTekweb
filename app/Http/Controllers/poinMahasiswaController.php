@@ -63,13 +63,22 @@ class poinMahasiswaController extends Controller
         if ($validasi->fails()) {
             return response()->json(['errors' => $validasi->errors()]);
         } else {
+            $request->validate([
+                'bukti' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            $imageName = time() . '.' . $request->image->extension();
+
+            $request->image->move(public_path('bukti'), $imageName);
+
             $data = [
                 'namaKegiatan' => $request->namaKegiatan,
                 'kategori' => $request->kategori,
                 'instansi' => $request->instansi,
                 'tglKegiatan' => $request->tglKegiatan,
                 'semester' => $request->semester,
-                'bukti' => $request->bukti
+                'bukti' => $imageName,
+                'status' => $request->status
             ];
             poinMahasiswa::create($data);
             return response()->json(['success' => "Berhasil upload poin, Silahkan tunggu di validasi"]);
@@ -115,6 +124,7 @@ class poinMahasiswaController extends Controller
             'tglKegiatan' => 'required',
             'semester' => 'required',
             'bukti' => 'required',
+            'status' => 'required',
         ], [
             'namaKegiatan.required' => 'Form nama kegiatan wajib diisi!',
             'kategori.required' => 'Form kategori kegiatan wajib diisi!',
@@ -123,17 +133,20 @@ class poinMahasiswaController extends Controller
             'semester.required' => 'Form semester wajib diisi!',
             'bukti.required' => 'Form bukti kegiatan wajib diisi!',
         ]);
+        
 
         if ($validasi->fails()) {
             return response()->json(['errors' => $validasi->errors()]);
         } else {
+            
             $data = [
                 'namaKegiatan' => $request->namaKegiatan,
                 'kategori' => $request->kategori,
                 'instansi' => $request->instansi,
                 'tglKegiatan' => $request->tglKegiatan,
                 'semester' => $request->semester,
-                'bukti' => $request->bukti
+                'bukti' => $request->bukti,
+                'status' => $request->status,
             ];
             poinMahasiswa::where('id_poin', $id)->update($data);
             return response()->json(['success' => "Berhasil edit data poin, Silahkan tunggu di validasi"]);

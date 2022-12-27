@@ -13,15 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('poin_mahasiswas', function (Blueprint $table) {
-            $table->id('id_poin');
-            $table->string('namaKegiatan');
-            $table->string('kategori');
-            $table->string('instansi');
-            $table->date('tglKegiatan');
-            $table->integer('semester');
-            $table->string('bukti');
-            $table->string('status');
+        Schema::create('kategoris', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('poin_mahasiswas');
+        Schema::dropIfExists('kategoris');
     }
 };

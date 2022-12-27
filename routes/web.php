@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('frontPage.dashboard');
 });
 
+Route::get('/lecturer', function () {
+    return view('backPage.lecturerPage');
+});
+
 Route::get('/poinPorto', function () {
     return view('frontPage.listPoint');
 });

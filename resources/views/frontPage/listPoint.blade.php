@@ -41,7 +41,11 @@
                             </div>
                             <div>
                                 <label for="bukti" class="block mb-2 text-sm font-medium text-slate-500 ">Upload Bukti</label>
-                                <input type="text" name="bukti" id="bukti" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
+                                <input type="file" name="bukti" id="bukti" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
+                            </div>
+                            <div class="">
+                                <label for="status" class="block mb-2 text-sm font-medium text-slate-500 ">Upload Bukti</label>
+                                <input type="text" value="Pending" name="status" id="status" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
                             </div>
 
                             <button type="button" class="uploadData w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Unggah Poin</button>
@@ -52,55 +56,6 @@
             </div>
         </div>
 
-        <!-- Main modal Update-->
-        <div class="py-12 bg-gray-200 bg-opacity-80 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0 hidden" id="modalEdit" aria-hidden="true">
-            <div role="alert" class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
-                <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow ">
-                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal" onclick="modalHandlerEdit()" aria-label="close modal" role="button">
-                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                    <div class="px-6 py-6 lg:px-8">
-                        <h3 class="mb-4 text-xl font-medium text-slate-600 text-center">Form Edit Poin</h3>
-                        <form class="space-y-6" action="" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div>
-                                <label for="NamaKegiatan" class="block mb-2 text-sm font-medium text-slate-500 ">Nama Kegiatan</label>
-                                <input type="text" name="namaKegiatan" id="editnamaKegiatan" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
-                            </div>
-                            <div>
-                                <label for="kategori" class="block mb-2 text-sm font-medium text-slate-500 ">Kategori Kegiatan</label>
-                                <input type="text" name="kategori" id="editkategori" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
-                            </div>
-                            <div>
-                                <label for="instansi" class="block mb-2 text-sm font-medium text-slate-500 ">Instansi Penyelenggara</label>
-                                <input type="text" name="instansi" id="editinstansi" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
-                            </div>
-                            <div>
-                                <label for="tglKegiatan" class="block mb-2 text-sm font-medium text-slate-500 ">Tanggal Kegiatan</label>
-                                <input type="date" name="tglKegiatan" id="edittglKegiatan" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
-                            </div>
-                            <div>
-                                <label for="semester" class="block mb-2 text-sm font-medium text-slate-500 ">Semester</label>
-                                <input type="text" name="semester" id="editsemester" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
-                            </div>
-                            <div>
-                                <label for="bukti" class="block mb-2 text-sm font-medium text-slate-500 ">Upload Bukti</label>
-                                <input type="text" name="bukti" id="editbukti" class="bg-gray-200 border text-slate-400 text-sm rounded-lg focus:ring-gray-700 focus:border-gray-700 block w-full p-2.5 " required>
-                            </div>
-
-                            <button type="button" class="uploadDataEdit w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit">Upload Poin</button>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main modal Update-->
 
 
         <!-- sidebar -->
@@ -127,30 +82,7 @@
                             </div>
                         </li>
                     </ul>
-                    <ul class="my-4">
-                        <li>
-                            <div class="rounded-lg p-4 bg-gray-200">
-                                <i class="fa-solid fa-file-signature text-slate-400"></i>
-                                <a href="" class="mx-4 text-slate-400 font-semibold">Validasi KRS</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="my-4">
-                        <li>
-                            <div class="rounded-lg p-4 bg-gray-200">
-                                <i class="fa-regular fa-file-lines text-slate-400"></i>
-                                <a href="" class="mx-4 text-slate-400 font-semibold">Pengaduan</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="my-4">
-                        <li>
-                            <div class="rounded-lg p-4 bg-gray-200">
-                                <i class="fa-solid fa-circle-info text-slate-400"></i>
-                                <a href="" class="mx-4 text-slate-400 font-semibold">Pengumuman</a>
-                            </div>
-                        </li>
-                    </ul>
+                   
                 </div>
             </div>
         </div>
@@ -248,32 +180,13 @@
                                 <th scope="col" class="py-3 px-6">Kategori Kegiatan</th>
                                 <th scope="col" class="py-3 px-6">Instansi Penyelenggara</th>
                                 <th scope="col" class="py-3 px-6">Tanggal Kegiatan</th>
-                                <th scope="col" class="py-3 px-6">Poin</th>
+                                <!-- <th scope="col" class="py-3 px-6">Poin</th> -->
                                 <th scope="col" class="py-3 px-6">Semester</th>
                                 <th scope="col" class="py-3 px-6">Bukti</th>
-                                <th scope="col" class="py-3 px-6">Status</th>
+                                <th scope="col" class="py-3 px-6 status">Status</th>
                                 <th scope="col" class="py-3 px-6">Action</th>
                             </tr>
                         </thead>
-                        <!-- <tbody>
-
-                            
-                            <tr class="bg-white border-b">
-                                <th scope="row" class="py-4 px-6 font-medium whitespace-nowrap text-slate-400">Test</th>
-                                <td class="py-4 px-6">Test</td>
-                                <td class="py-4 px-6">Test</td>
-                                <td class="py-4 px-6">Test</td>
-                                <td class="py-4 px-6">5</td>
-                                <td class="py-4 px-6"><a href="#" class="underline">Lihat Bukti</a></td>
-                                <td class="py-4 px-6 text-green-500 font-semibold">Tervalidasi</td>
-                                <td class="py-4 px-6 font-semibold">
-                                    <form action="" method="Post">
-                                        
-                                    </form>
-                                </td>
-                            </tr>
-                            
-                        </tbody> -->
                     </table>
                 </div>
             </div>
